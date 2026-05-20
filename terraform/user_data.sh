@@ -18,6 +18,7 @@ curl -SL "https://github.com/docker/compose/releases/download/$${COMPOSE_VERSION
 chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
 
 # Clone the repo and start the app
-git clone ${repo_url} /opt/ofp-quiz
-cd /opt/ofp-quiz
+git clone ${repo_url} /opt/ofp-abriev-quiz
+chown -R ec2-user:ec2-user /opt/ofp-abriev-quiz
+cd /opt/ofp-abriev-quiz
 docker compose up -d
