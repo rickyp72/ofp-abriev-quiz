@@ -40,5 +40,4 @@ jobs:
             cd /opt/ofp-abriev-quiz
             git status
             git pull
-            git log
             docker compose up --build -d
