@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-VFR Abbreviations Quiz
-Run with:  python vfr_quiz.py
+OFP Abbreviation Quiz
+Run with:  python glossery_quiz.py
 Then open: http://localhost:8080
 """
 
@@ -15,7 +15,7 @@ HTML = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VFR Abbreviations Quiz</title>
+<title>OFP Abbreviation Quiz</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: system-ui, -apple-system, sans-serif; background: #f5f5f0; color: #1a1a1a; min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 2rem 1rem; }
@@ -68,7 +68,7 @@ HTML = """<!DOCTYPE html>
 </head>
 <body>
 <div class="container">
-  <h1>VFR Abbreviations Quiz</h1>
+  <h1>OFP Abbreviation Quiz</h1>
   <p class="subtitle">EGMC &rarr; EGJJ &mdash; 10 random questions each round</p>
   <div id="app"></div>
 </div>
@@ -267,7 +267,7 @@ def open_browser():
 
 if __name__ == "__main__":
     server = http.server.HTTPServer(("", PORT), QuizHandler)
-    print(f"VFR Quiz running at http://localhost:{PORT}")
+    print(f"OFP Quiz running at http://localhost:{PORT}")
     print("Press Ctrl+C to stop.\n")
     threading.Timer(1.0, open_browser).start()
     try:
