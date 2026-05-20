@@ -37,7 +37,7 @@ jobs:
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /opt/ofp-quiz
+            cd /opt/ofp-abriev-quiz
             git status
             git pull
             git log
