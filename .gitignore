@@ -26,3 +26,11 @@ instance/
 
 # info
 rp-*.txt
+rp-*.md
+
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+terraform/terraform.tfvars

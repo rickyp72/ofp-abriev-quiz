@@ -3,7 +3,7 @@ VENV         := .venv
 PYTHON       := $(VENV)/bin/python
 PIP          := $(VENV)/bin/pip
 
-.PHONY: help install run test docker-up docker-down clean
+.PHONY: help install run test docker-up docker-down clean tf-init tf-plan tf-apply tf-destroy
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  %-14s %s\n", $$1, $$2}'
@@ -29,3 +29,15 @@ docker-down: ## Stop and remove the Docker containers
 
 clean: ## Remove the virtual environment and cache files
 	rm -rf $(VENV) __pycache__ tests/__pycache__ .pytest_cache
+
+tf-init: ## Initialise Terraform (run once)
+	cd terraform && terraform init
+
+tf-plan: ## Preview infrastructure changes
+	cd terraform && terraform plan
+
+tf-apply: ## Create / update infrastructure on AWS
+	cd terraform && terraform apply
+
+tf-destroy: ## Tear down all AWS infrastructure
+	cd terraform && terraform destroy

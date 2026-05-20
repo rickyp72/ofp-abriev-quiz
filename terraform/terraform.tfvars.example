@@ -1,0 +1,5 @@
+# Copy this file to terraform.tfvars and fill in your values
+
+aws_region    = "eu-west-2"
+instance_name = "ofp-quiz"
+repo_url      = "https://github.com/rickyp72/ofp-abriev-quiz.git"
