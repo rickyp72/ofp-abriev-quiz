@@ -65,11 +65,20 @@ class TestData:
 # ---------------------------------------------------------------------------
 
 class TestRoutes:
-    def test_index_returns_200(self, client):
+    def test_home_returns_200(self, client):
         assert client.get("/").status_code == 200
 
-    def test_index_contains_title(self, client):
+    def test_home_contains_title(self, client):
         assert b"OFP Abbreviation Quiz" in client.get("/").data
+
+    def test_home_contains_quiz_link(self, client):
+        assert b'href="/quiz"' in client.get("/").data
+
+    def test_quiz_returns_200(self, client):
+        assert client.get("/quiz").status_code == 200
+
+    def test_quiz_contains_title(self, client):
+        assert b"OFP Abbreviation Quiz" in client.get("/quiz").data
 
     def test_api_questions_returns_200(self, client):
         assert client.get("/api/questions").status_code == 200

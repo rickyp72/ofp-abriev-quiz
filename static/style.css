@@ -46,3 +46,8 @@ h1 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; color: #1a1a1a
 .restart-btn:hover { background: #eaeae5; }
 #feedback-area { min-height: 0; }
 .loading { text-align: center; color: #666; padding: 2rem; font-size: 0.9rem; }
+.home-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 2rem 1.5rem; text-align: center; }
+.home-desc { font-size: 0.95rem; color: #555; line-height: 1.7; margin-bottom: 1.5rem; }
+.home-cats { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 2rem; }
+.start-btn { display: inline-block; padding: 12px 36px; background: #378ADD; color: #fff; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+.start-btn:hover { background: #2a6db5; }
