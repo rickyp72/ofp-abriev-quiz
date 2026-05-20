@@ -1,0 +1,25 @@
+import random
+from flask import Flask, jsonify, render_template
+from data import QUESTIONS
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.route("/api/questions")
+def get_questions():
+    sample = random.sample(QUESTIONS, min(10, len(QUESTIONS)))
+    result = []
+    for abbr, cat, correct, wrongs in sample:
+        options = [correct] + list(wrongs)
+        random.shuffle(options)
+        result.append({"abbr": abbr, "cat": cat, "correct": correct, "options": options})
+    return jsonify(result)
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
