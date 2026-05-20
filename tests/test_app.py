@@ -69,7 +69,7 @@ class TestRoutes:
         assert client.get("/").status_code == 200
 
     def test_home_contains_title(self, client):
-        assert b"OFP Abbreviation Quiz" in client.get("/").data
+        assert b"FlightSimBridge" in client.get("/").data
 
     def test_home_contains_quiz_link(self, client):
         assert b'href="/quiz"' in client.get("/").data
