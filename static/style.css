@@ -46,6 +46,10 @@ h1 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; color: #1a1a1a
 .restart-btn:hover { background: #eaeae5; }
 #feedback-area { min-height: 0; }
 .loading { text-align: center; color: #666; padding: 2rem; font-size: 0.9rem; }
+.top-bar { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.25rem; }
+.top-bar h1 { margin-bottom: 0; }
+.home-btn { font-size: 0.8rem; color: #666; text-decoration: none; white-space: nowrap; }
+.home-btn:hover { color: #1a1a1a; }
 .home-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 2rem 1.5rem; text-align: center; }
 .home-desc { font-size: 0.95rem; color: #555; line-height: 1.7; margin-bottom: 1.5rem; }
 .home-cats { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 2rem; }
