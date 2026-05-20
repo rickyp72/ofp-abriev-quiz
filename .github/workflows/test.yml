@@ -38,5 +38,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /opt/ofp-quiz
+            git status
             git pull
+            git log
             docker compose up --build -d
