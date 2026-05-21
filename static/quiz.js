@@ -6,9 +6,18 @@ let questions = [], current = 0, score = 0, answered = false, results = [];
 async function init() {
   const app = document.getElementById("app");
   app.innerHTML = '<div class="loading">Loading questions…</div>';
-  const res = await fetch("/api/questions");
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get("cat");
+  const url = cat ? `/api/questions?cat=${encodeURIComponent(cat)}` : "/api/questions";
+  const res = await fetch(url);
   questions = await res.json();
   current = 0; score = 0; answered = false; results = [];
+  const subtitle = document.querySelector(".subtitle");
+  if (subtitle) {
+    subtitle.textContent = cat && CAT_NAMES[cat]
+      ? `${CAT_NAMES[cat]} — ${questions.length} questions this round`
+      : `EGMC → EGJJ — ${questions.length} questions this round`;
+  }
   render();
 }
 

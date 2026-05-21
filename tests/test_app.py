@@ -111,6 +111,19 @@ class TestRoutes:
         abbrs = [q["abbr"] for q in client.get("/api/questions").get_json()]
         assert len(abbrs) == len(set(abbrs)), "Duplicate questions returned in one round"
 
+    def test_api_category_filter_returns_correct_category(self, client):
+        for cat in ["wx", "nav", "atc", "fuel", "perf", "airspace"]:
+            data = client.get(f"/api/questions?cat={cat}").get_json()
+            assert all(q["cat"] == cat for q in data), f"Non-{cat} question returned when filtering by {cat}"
+
+    def test_api_category_filter_unknown_returns_empty(self, client):
+        data = client.get("/api/questions?cat=unknown").get_json()
+        assert data == []
+
+    def test_api_no_filter_returns_mixed_categories(self, client):
+        cats = {q["cat"] for q in client.get("/api/questions").get_json()}
+        assert len(cats) > 1, "Unfiltered quiz should return multiple categories"
+
     def test_api_randomises_question_selection(self, client):
         orders = {tuple(q["abbr"] for q in client.get("/api/questions").get_json()) for _ in range(8)}
         assert len(orders) > 1, "Question order was identical across 8 calls — randomisation may be broken"

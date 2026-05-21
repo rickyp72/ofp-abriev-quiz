@@ -53,6 +53,9 @@ h1 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; color: #1a1a1a
 .home-card { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 2rem 1.5rem; text-align: center; }
 .home-tool-title { font-size: 1rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.75rem; }
 .home-desc { font-size: 0.95rem; color: #555; line-height: 1.7; margin-bottom: 1.5rem; }
-.home-cats { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 2rem; }
-.start-btn { display: inline-block; padding: 12px 36px; background: #378ADD; color: #fff; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: background 0.15s; }
+.home-cats { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.home-cats-label { font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 0.07em; margin: 1.25rem 0 0.6rem; }
+a.cat-pill { text-decoration: none; transition: opacity 0.15s; }
+a.cat-pill:hover { opacity: 0.75; }
+.start-btn { display: inline-block; padding: 12px 36px; background: #378ADD; color: #fff; border-radius: 8px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: background 0.15s; margin-bottom: 0; }
 .start-btn:hover { background: #2a6db5; }

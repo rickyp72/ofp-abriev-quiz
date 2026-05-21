@@ -1,5 +1,5 @@
 import random
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from data import QUESTIONS
 
 app = Flask(__name__)
@@ -17,7 +17,9 @@ def quiz():
 
 @app.route("/api/questions")
 def get_questions():
-    sample = random.sample(QUESTIONS, min(10, len(QUESTIONS)))
+    cat_filter = request.args.get("cat")
+    pool = [q for q in QUESTIONS if q[1] == cat_filter] if cat_filter else QUESTIONS
+    sample = random.sample(pool, min(10, len(pool)))
     result = []
     for abbr, cat, correct, wrongs in sample:
         options = [correct] + list(wrongs)
