@@ -18,10 +18,12 @@ def quiz():
 @app.route("/api/questions")
 def get_questions():
     cat_filter = request.args.get("cat")
+    fetch_all = request.args.get("all") == "true"
     pool = [q for q in QUESTIONS if q[1] == cat_filter] if cat_filter else QUESTIONS
-    sample = random.sample(pool, min(10, len(pool)))
+    result_pool = list(pool) if fetch_all else random.sample(pool, min(10, len(pool)))
+    random.shuffle(result_pool)
     result = []
-    for abbr, cat, correct, wrongs in sample:
+    for abbr, cat, correct, wrongs in result_pool:
         options = [correct] + list(wrongs)
         random.shuffle(options)
         result.append({"abbr": abbr, "cat": cat, "correct": correct, "options": options})

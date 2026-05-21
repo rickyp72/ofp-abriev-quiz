@@ -111,6 +111,16 @@ class TestRoutes:
         abbrs = [q["abbr"] for q in client.get("/api/questions").get_json()]
         assert len(abbrs) == len(set(abbrs)), "Duplicate questions returned in one round"
 
+    def test_api_all_returns_every_question(self, client):
+        data = client.get("/api/questions?all=true").get_json()
+        assert len(data) == len(QUESTIONS)
+
+    def test_api_all_with_category_returns_full_category(self, client):
+        data = client.get("/api/questions?all=true&cat=wx").get_json()
+        expected = sum(1 for q in QUESTIONS if q[1] == "wx")
+        assert len(data) == expected
+        assert all(q["cat"] == "wx" for q in data)
+
     def test_api_category_filter_returns_correct_category(self, client):
         for cat in ["wx", "nav", "atc", "fuel", "perf", "airspace"]:
             data = client.get(f"/api/questions?cat={cat}").get_json()
